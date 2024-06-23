@@ -81,7 +81,7 @@ def user_input_features():
 
 # User input features
 input_df = user_input_features()
-st.subheader('Player Features')
+st.subheader('Player Features Summary')
 st.write(input_df)
 
 # Predict the rating
