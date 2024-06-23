@@ -31,7 +31,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Sidebar input form
-st.sidebar.header('⚙️ User Input Features')
+st.sidebar.header('⚙️ Player Features')
 
 def user_input_features():
     movement_reactions = st.sidebar.slider('⚡ Movement Reactions', 0, 100, 50)
@@ -81,9 +81,7 @@ def user_input_features():
 
 # User input features
 input_df = user_input_features()
-
-# Display the user input features
-st.subheader('User Input Features')
+st.subheader('Player Features')
 st.write(input_df)
 
 # Predict the rating
@@ -93,15 +91,13 @@ prediction = model.predict(input_df)[0]
 def calculate_confidence(model, input_df):
     # Make predictions for all data to get residuals
     y_pred_all = model.predict(input_df)
-
-    # Calculate residuals
     residuals = model.predict(input_df, output_margin=True) - y_pred_all
 
-    # Estimate standard deviation of residuals
+    # Standard deviation of residuals
     residual_std = np.std(residuals)
 
     # Calculate 99% prediction interval
-    t_value = 2.576  # for 99% confidence level and large degrees of freedom
+    t_value = 2.576  # for 99% confidence level 
     lower_bound = prediction - t_value * residual_std
     upper_bound = prediction + t_value * residual_std
 
