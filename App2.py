@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 # Load the XGBoost model
-model = joblib.load('/Users/elorm/Documents/AI codes/best_xgboost_model.pkl')
+model = joblib.load('best_xgboost_model.pkl')
 
 st.set_page_config(page_title="Player Rating Prediction App", layout="centered", initial_sidebar_state="expanded")
 
